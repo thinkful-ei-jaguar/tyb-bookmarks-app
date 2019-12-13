@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+main {
+    max-width: 75%;
+    margin: auto;
+}
+span.checked {
+    color: green;
+}
+
+header {
+    text-align: center;
+}
+
+section.errormessage {
+    text-align: center;
+    color: red;
+}
+
+section.addandfilter {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+button {
+    border-radius: 1px;
+    padding: 5px;
+}
+
+button.formbutton {
+    margin: auto;
+}
+
+form {
+    background-color: darkgrey;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+input.textbox {
+    width: 75%;
+    height: 100px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li.bookmarks {
+    background-color: darkgrey;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+li.expanded {
+    border-style: solid;
+    border-color: darkslategray;
+    border-width: 2px;
+}
+
+p.title {
+    text-align: left;
+}
+
+span.fa {
+    padding: 1px;
+}
