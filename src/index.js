@@ -2,14 +2,23 @@ import $ from 'jquery';
 
 import './index.css';
 
-import bookmarks from './bookmarks';
+import store from './store';
+import bookmarksmaker from './bookmarksmaker';
+import eventlisteners from './eventlisteners';
+import api from './api';
+
 
 
 function main() {
     console.log('DOM is loaded');
-  
-    const startMsg = $('<p>Webpack is working!</p>');
-    $('#root').append(startMsg);
-  }
+    console.log(api.retrieveBookmarks());
+      /*.then((items) => {
+        items.forEach((bookmark) => StorageEvent.addItem(bookmark));
+        bookmarksmaker.render();
+      });
+
+    eventlisteners.combineEventListeners();
+    bookmarksmaker.render();*/
+  };
   
   $(main);
