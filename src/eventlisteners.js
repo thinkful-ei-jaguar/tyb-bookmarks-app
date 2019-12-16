@@ -11,11 +11,14 @@ const handleSumbitNewBookmark = function  () {
 }
 
 const filterByRank = function  () {
-
+  
 }
 
 const handleBookmarkExpand = function  () {
-
+    /*$('ul').children().on('click', event => {
+        console.log('hey!');
+    })
+    render();*/
 }
 
 const handleDelete = function  () {

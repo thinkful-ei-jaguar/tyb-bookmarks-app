@@ -10,19 +10,13 @@ import api from './api';
 
 
 function main() {
-  api.addBookmark({title: 'Pinterest', url: 'www.pinterest.com', desc: 'A picture saving website', rating: 5})
-  .then(res => res.json())
-  .then((newBookmark) => {
-    return api.retrieveBookmarks();
-  })
-  .then(res => res.json())
-  .then((items) => {
-    console.log(items);
-  });
-
     console.log('DOM is loaded');
     api.retrieveBookmarks()
-      .then(res => res.json())
+      .then(response => response.json())
+      .then(responseJson => responseJson.forEach(element => store.addItem(element)));
+
+    eventlisteners.combineEventListeners();
+    bookmarksmaker.render();
   };
   
   $(main);

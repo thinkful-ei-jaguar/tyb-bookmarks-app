@@ -5,27 +5,25 @@ import store from './store';
 const generateBookmarkItem = function (item) {
     if (!bookmark.expanded) {
        return `<li class="bookmarks expanded">
-                    <p>${bookmark.title}</p>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <p>${bookmark.description}</p>
-                    <a href="${bookmark.url}">Website</a>
-                    <button type="submit">Remove</button>
-                    <button type="submit">Edit</button>
-                </li>`
-    }
-    return `<li class="bookmarks">
-    <p>${bookmark.title}</p>
+       <p>${store.items.bookmark.title}</p>
+       <span class="fa fa-star"></span>
+       <span class="fa fa-star"></span>
+       <span class="fa fa-star"></span>
+       <span class="fa fa-star"></span>
+       <span class="fa fa-star"></span>
+       <p>${bookmark.description}</p>
+       <a href="${bookmark.url}">Website</a>
+       <button type="submit">Remove</button>
+       <button type="submit">Edit</button>
+       </li>`};
+    return `<li class="bookmarks"><p>${bookmark.title}</p>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
-</li>`;
-}
+    </li>`;
+};
 
 const generateAddForm = function () {
     if (!adding) {
@@ -51,12 +49,13 @@ const generateAddForm = function () {
         <button type="submit">Add</button>
     </form>
 </section>`;}
-}
+};
 
 const render = function () {
-
-}
+   const bookmarkListString = generateBookmarkItem(store.items);
+   console.log(bookmarkListString);
+};
 
 export default {
     render,
-}
+};

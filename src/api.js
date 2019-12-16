@@ -1,23 +1,27 @@
 const baseURL = 'https://thinkful-list-api.herokuapp.com/stronghearth/bookmarks';
 
 const retrieveBookmarks = function () {
-    return fetch(baseURL);
-            
-}
+    return fetch(baseURL)
+                 
+};
+
+console.log(retrieveBookmarks());
 
 const addBookmark = function (bookmark) {
     const newBookmark = JSON.stringify(bookmark);
-    console.log(newBookmark);
     return fetch(baseURL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: newBookmark
     });
-}
+};
 
-const deleteBookmark = function () {
+const deleteBookmark = function (id) {
+    return fetch(baseURL + id, {
+        method: 'DELETE'
+    });
 
-}
+};
 
 export default {
     retrieveBookmarks,
