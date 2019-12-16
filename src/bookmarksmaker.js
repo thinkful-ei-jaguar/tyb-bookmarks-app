@@ -13,16 +13,32 @@ const generateStarRating = function (rating) {
         }
     }
     return starHtml;
-    /*for (let i=1; i<=item.rating; i++) {
-        $( `li#${item.id}:nth-child(${i+1})`).addClass('checked');
-    }*/
+  
 }
 
 const generateBookmarkItem = function (item) {
     let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
-    htmlString += generateStarRating(item.rating) + `</li>`;
-    return htmlString;
+    if (store.expanded === true) {
+    htmlString += generateStarRating(item.rating) + `<p>${item.desc}</p>
+        <a href="${item.url}">Website</a>
+        <button type="submit">Remove</button>
+        <button type="submit">Edit</button><span class="fa fa-chevron-up js-up-arrow"></span></li>`;
+        return htmlString;
+    }
+    else {
+        htmlString += generateStarRating(item.rating) + `<span class="fa fa-chevron-down js-down-arrow"></span></li>`;
+        return htmlString;
+    }
 };
+
+const generateExpandedItem = function (item) {
+    let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
+    htmlString += generateStarRating(item.rating) + `<p>${item.desc}</p>
+        <a href="${item.url}">Website</a>
+        <button type="submit">Remove</button>
+        <button type="submit">Edit</button><span class="fa fa-chevron-up js-up-arrow"></span></li>`;
+    return htmlString;
+}
 
 const generateBookmarkString = function (bookmarks) {
     const liItems = bookmarks.map((item) => generateBookmarkItem(item));
@@ -30,7 +46,7 @@ const generateBookmarkString = function (bookmarks) {
 };
 
 const generateAddForm = function () {
-    if (!adding) {
+    /*if (!adding) {
     return `<section>
     <form id="addNewBookmark" class="addNew">
         <label for="bookmarktitle">Title:</label>
@@ -52,14 +68,32 @@ const generateAddForm = function () {
         <br><br>
         <button type="submit">Add</button>
     </form>
-</section>`;}
+</section>`;}*/
 };
 
 const render = function () {
-   const bookmarkListString = generateBookmarkString(store.items);
+   
+   if(store.expanded === true) {
+    const expandedBookmarkString = generateExpandedItem(store.items);
+    $('js-individual-bookmark').html(expandedBookmarkString);
+    }
+    else {
+    const bookmarkListString = generateBookmarkString(store.items);
    $('.js-bookmark-list').children().append(bookmarkListString);
+    }
 };
+
+export {
+    generateStarRating,
+    generateBookmarkItem,
+    generateBookmarkString,
+    generateAddForm,
+}
 
 export default {
     render,
 };
+
+  /*for (let i=1; i<=item.rating; i++) {
+        $( `li#${item.id}:nth-child(${i+1})`).addClass('checked');
+    }*/

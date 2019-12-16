@@ -4,7 +4,7 @@ let expanded = false;
 let adding = false;
 
 const findById = function (id) {
-
+    return this.items.find(currentItem => currentItem.id === id);
 };
 
 const addItem = function (item) {
@@ -15,8 +15,8 @@ const deleteBookmark = function () {
 
 };
 
-const expandItem = function () {
-
+const expandItem = function (id) {
+    this.expanded = !this.expanded;
 };
 
 const changeRank = function () {
