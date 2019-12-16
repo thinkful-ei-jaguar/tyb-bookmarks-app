@@ -1,11 +1,8 @@
 const baseURL = 'https://thinkful-list-api.herokuapp.com/stronghearth/bookmarks';
 
 const retrieveBookmarks = function () {
-    return fetch(baseURL)
-                 
+    return fetch(baseURL)            
 };
-
-console.log(retrieveBookmarks());
 
 const addBookmark = function (bookmark) {
     const newBookmark = JSON.stringify(bookmark);

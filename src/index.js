@@ -12,9 +12,10 @@ import api from './api';
 function main() {
     console.log('DOM is loaded');
     api.retrieveBookmarks()
-      .then(response => response.json())
-      .then(responseJson => responseJson.forEach(element => store.addItem(element)));
-
+      .then(res => res.json())
+      .then(responseJson => {responseJson.forEach(element => store.addItem(element));
+        bookmarksmaker.render()});
+      
     eventlisteners.combineEventListeners();
     bookmarksmaker.render();
   };
