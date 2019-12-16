@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import api from './api';
 import store from './store';
+import eventlisteners from './eventlisteners';
 
 const generateStarRating = function (rating) {
     let starHtml = '';
@@ -18,27 +19,23 @@ const generateStarRating = function (rating) {
 
 const generateBookmarkItem = function (item) {
     let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
-    if (store.expanded === true) {
-    htmlString += generateStarRating(item.rating) + `<p>${item.desc}</p>
-        <a href="${item.url}">Website</a>
-        <button type="submit">Remove</button>
-        <button type="submit">Edit</button><span class="fa fa-chevron-up js-up-arrow"></span></li>`;
+    if (item.expanded === false) {
+        htmlString += generateStarRating(item.rating) + `<span class="fa fa-chevron-down js-down-arrow"></span></li>`;
         return htmlString;
     }
     else {
-        htmlString += generateStarRating(item.rating) + `<span class="fa fa-chevron-down js-down-arrow"></span></li>`;
+        htmlString += generateStarRating(item.rating) + `<p>${item.desc}</p>
+        <a href="${item.url}">Website</a>
+        <button type="submit">Remove</button>
+        <button type="submit">Edit</button><span class="fa fa-chevron-up js-up-arrow"></span></li>`;
         return htmlString;
     }
 };
 
-const generateExpandedItem = function (item) {
+/*const generateExpandedItem = function (item) {
     let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
-    htmlString += generateStarRating(item.rating) + `<p>${item.desc}</p>
-        <a href="${item.url}">Website</a>
-        <button type="submit">Remove</button>
-        <button type="submit">Edit</button><span class="fa fa-chevron-up js-up-arrow"></span></li>`;
-    return htmlString;
-}
+    
+}*/
 
 const generateBookmarkString = function (bookmarks) {
     const liItems = bookmarks.map((item) => generateBookmarkItem(item));
@@ -72,20 +69,14 @@ const generateAddForm = function () {
 };
 
 const render = function () {
-   
-   if(store.expanded === true) {
-    const expandedBookmarkString = generateExpandedItem(store.items);
-    $('js-individual-bookmark').html(expandedBookmarkString);
-    }
-    else {
-    const bookmarkListString = generateBookmarkString(store.items);
-   $('.js-bookmark-list').children().append(bookmarkListString);
-    }
+        const bookmarkListString = generateBookmarkString(store.items);
+        $('.js-bookmark-list').children().html(bookmarkListString);
 };
 
 export {
     generateStarRating,
     generateBookmarkItem,
+    //generateExpandedItem,
     generateBookmarkString,
     generateAddForm,
 }

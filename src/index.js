@@ -13,7 +13,10 @@ function main() {
     console.log('DOM is loaded');
     api.retrieveBookmarks()
       .then(res => res.json())
-      .then(responseJson => {responseJson.forEach(element => store.addItem(element));
+      .then(responseJson => {responseJson.forEach(element =>{
+        element.expanded = false;
+        store.addItem(element);
+      });
         bookmarksmaker.render()});
       
     eventlisteners.combineEventListeners();

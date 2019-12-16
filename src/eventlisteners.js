@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {generateStarRating,
     generateBookmarkItem,
+    generateExpandedItem,
     generateBookmarkString,
     generateAddForm,} from './bookmarksmaker';
 import bookmarksmaker from './bookmarksmaker';
@@ -25,9 +26,9 @@ const filterByRank = function  () {
 const handleBookmarkExpand = function  () {
     $('ul').on('click', '.js-individual-bookmark', event => {
         const id = getIdFromElement(event.currentTarget);
-        console.log(id);
-        store.expandItem(id);
-        bookmarksmaker.render(); 
+        const item = store.findById(id);
+        store.findAndExpand(id, {expanded: !item.expanded});
+        bookmarksmaker.render();
     })
     
 }
@@ -41,6 +42,7 @@ const handleError = function  () {
 }
 
 const combineEventListeners = function () {
+    getIdFromElement(),
     handleBookmarkExpand(),
     handleAddBookmark(),
     handleSumbitNewBookmark(),

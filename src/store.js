@@ -1,6 +1,5 @@
 const items = [];
 let error = null;
-let expanded = false;
 let adding = false;
 
 const findById = function (id) {
@@ -15,9 +14,10 @@ const deleteBookmark = function () {
 
 };
 
-const expandItem = function (id) {
-    this.expanded = !this.expanded;
-};
+const findAndExpand = function (id, newData) {
+    const currentItem = this.findById(id);
+    Object.assign(currentItem, newData);
+}
 
 const changeRank = function () {
 
@@ -30,12 +30,11 @@ const triggerError = function () {
 export default {
     items,
     error,
-    expanded,
     adding,
     findById,
     addItem,
     deleteBookmark,
-    expandItem,
+    findAndExpand,
     changeRank,
     triggerError
 };
