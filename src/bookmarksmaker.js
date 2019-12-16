@@ -20,14 +20,14 @@ const generateStarRating = function (rating) {
 const generateBookmarkItem = function (item) {
     let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
     if (item.expanded === false) {
-        htmlString += generateStarRating(item.rating) + `<span class="fa fa-chevron-down js-down-arrow"></span></li>`;
+        htmlString += generateStarRating(item.rating) + `<span class="far fa-trash-alt js-delete-button"></span><span class="fa fa-chevron-down js-arrow-button"></span></li>`;
         return htmlString;
     }
     else {
         htmlString += generateStarRating(item.rating) + `<p>${item.desc}</p>
         <a href="${item.url}">Website</a>
-        <button type="submit">Remove</button>
-        <button type="submit">Edit</button><span class="fa fa-chevron-up js-up-arrow"></span></li>`;
+        <button type="submit">Edit</button><span class="far fa-trash-alt js-delete-button"></span><span class="fa fa-chevron-up js-arrow-button"></span>
+        </li>`;
         return htmlString;
     }
 };
@@ -76,7 +76,6 @@ const render = function () {
 export {
     generateStarRating,
     generateBookmarkItem,
-    //generateExpandedItem,
     generateBookmarkString,
     generateAddForm,
 }

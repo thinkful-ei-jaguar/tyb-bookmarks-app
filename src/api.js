@@ -14,7 +14,7 @@ const addBookmark = function (bookmark) {
 };
 
 const deleteBookmark = function (id) {
-    return fetch(baseURL + id, {
+    return fetch(baseURL + '/' + id, {
         method: 'DELETE'
     });
 

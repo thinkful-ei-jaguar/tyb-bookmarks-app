@@ -1,3 +1,5 @@
+import api from "./api";
+
 const items = [];
 let error = null;
 let adding = false;
@@ -10,8 +12,9 @@ const addItem = function (item) {
     this.items.push(item);
 };
 
-const deleteBookmark = function () {
-
+const deleteLiItem = function (id) {
+   this.items = this.items.filter(currentItem => currentItem.id !== id);
+    
 };
 
 const findAndExpand = function (id, newData) {
@@ -33,7 +36,7 @@ export default {
     adding,
     findById,
     addItem,
-    deleteBookmark,
+    deleteLiItem,
     findAndExpand,
     changeRank,
     triggerError
