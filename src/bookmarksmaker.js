@@ -20,13 +20,16 @@ const generateStarRating = function (rating) {
 const generateBookmarkItem = function (item) {
     let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
     if (item.expanded === false) {
-        htmlString += generateStarRating(item.rating) + `<span class="far fa-trash-alt js-delete-button"></span><span class="fa fa-chevron-down js-arrow-button"></span></li>`;
+        htmlString += generateStarRating(item.rating) + 
+        `<button class="btn js-delete-button"><i class="far fa-trash-alt"></i></button>
+        <button class="btn js-arrow-button"><i class="fa fa-chevron-down"></i></button>`;
         return htmlString;
     }
     else {
         htmlString += `<p>${item.desc}</p>` + generateStarRating(item.rating) +
         `<button onclick="window.location.href = '${item.url}';">Website</button>
-        <button type="submit">Edit</button><span class="far fa-trash-alt js-delete-button"></span><span class="fa fa-chevron-up js-arrow-button"></span>
+        <button class="btn js-delete-button"><i class="far fa-trash-alt"></i></button>
+        <button class="btn js-arrow-button"><i class="fa fa-chevron-up"></i></button>
         </li>`;
         return htmlString;
     }
@@ -38,10 +41,15 @@ const generateBookmarkString = function (bookmarks) {
 };
 
 const generateButtonString = function () {
-    return `<section class="addandfilter js-add-and-filter">
-    <button class="formbutton js-add-button" type="submit">Add Bookmark</button>
-    <button class="formbutton" type="submit">Filter by Rating</button>
-    </section>`;
+    return `<button class="formbutton js-add-button" type="submit">Add Bookmark</button>
+    <select name="rating" id="ratingFilter">
+            <option value="0">Minimum Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>`;
 }
 
 const generateAddForm = function () {

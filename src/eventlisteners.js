@@ -21,7 +21,7 @@ const handleAddBookmarkOpen = function  () {
 
 }
 
-const handleSumbitNewBookmark = function  () {
+const handleSumbitNewBookmark = function () {
     $('.js-add-and-filter').on('click', '.js-add-confirm', event => {
         event.preventDefault();
         const newBookmarkObj = {
@@ -34,7 +34,6 @@ const handleSumbitNewBookmark = function  () {
             .then(res => res.json())
             .then(responseJson => {
                 responseJson.expanded = false;
-                console.log(responseJson);
                 store.addItem(responseJson);
                 bookmarksmaker.render();});
         store.toggleAddMenu();
@@ -46,13 +45,16 @@ const handleCancelAdd = function () {
     $('.js-add-and-filter').on('click', '.js-dont-add', event => {
         event.preventDefault();
         store.toggleAddMenu();
-        console.log(store.adding);
         bookmarksmaker.render();
     })
 }
 
 const filterByRank = function  () {
-  
+   $('.js-add-and-filter').on('click', '#ratingFilter', event => {
+       let currentSelection = $(event.currentTarget).val();
+       store.changeRank(currentSelection);
+       console.log(store.filter);
+   })
 }
 
 const handleBookmarkExpand = function  () {

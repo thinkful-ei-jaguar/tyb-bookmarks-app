@@ -3,6 +3,7 @@ import api from "./api";
 const items = [];
 let error = null;
 let adding = false;
+let filter = 0;
 
 const findById = function (id) {
     return this.items.find(currentItem => currentItem.id === id);
@@ -26,8 +27,8 @@ const findAndExpand = function (id, newData) {
     Object.assign(currentItem, newData);
 }
 
-const changeRank = function () {
-
+const changeRank = function (num) {
+    this.filter = num;
 };
 
 const triggerError = function () {
@@ -38,6 +39,7 @@ export default {
     items,
     error,
     adding,
+    filter,
     findById,
     addItem,
     toggleAddMenu,
