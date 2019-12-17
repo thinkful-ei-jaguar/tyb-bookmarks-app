@@ -68,22 +68,41 @@ li.expanded {
     border-width: 2px;
 }
 
-p.title {
-    text-align: left;
-}
-
-span.fa {
-    padding: 1px;
-}
 
 @media screen and (max-width: 320px) {
-
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 320px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+    li.bookmarks {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
 
 }
 
 @media screen and (min-width: 1000px) {
-    
+
 }

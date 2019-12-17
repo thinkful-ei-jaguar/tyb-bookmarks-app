@@ -42,7 +42,7 @@ const generateBookmarkString = function (bookmarks) {
 
 const generateButtonString = function () {
     return `<button class="formbutton js-add-button" type="submit">Add Bookmark</button>
-    <select name="rating" id="ratingFilter">
+        <select name="rating" class="ratingDropDown" id="ratingFilter">
             <option value="0">Minimum Rating</option>
             <option value="1">1</option>
             <option value="2">2</option>

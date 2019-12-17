@@ -50,8 +50,8 @@ const handleCancelAdd = function () {
 }
 
 const filterByRank = function  () {
-   $('.js-add-and-filter').on('click', '#ratingFilter', event => {
-       let currentSelection = $(event.currentTarget).val();
+   $('select.ratingDropDown').change(function () {
+       let currentSelection = $(this).children('option:selected').val();
        store.changeRank(currentSelection);
        console.log(store.filter);
    })
