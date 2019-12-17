@@ -12,12 +12,43 @@ const getIdFromElement = function (item) {
     return $(item).closest('.js-individual-bookmark').attr('id');
 }
 
-const handleAddBookmark = function  () {
+const handleAddBookmarkOpen = function  () {
+    $('.js-add-and-filter').on('click', '.js-add-button', event => {
+        event.preventDefault();
+        store.toggleAddMenu();
+        bookmarksmaker.render();
+    })
 
 }
 
 const handleSumbitNewBookmark = function  () {
+    $('.js-add-and-filter').on('click', '.js-add-confirm', event => {
+        event.preventDefault();
+        const newBookmarkObj = {
+            title: $('#bookmarktitle').val(),
+            url: $('#url').val(),
+            desc: $('#bookmarkdescription').val(),
+            rating: $('#rating').val()
+        };
+        api.addBookmark(newBookmarkObj)
+            .then(res => res.json())
+            .then(responseJson => {
+                responseJson.expanded = false;
+                console.log(responseJson);
+                store.addItem(responseJson);
+                bookmarksmaker.render();});
+        store.toggleAddMenu();
+        bookmarksmaker.render();
+        });
+}
 
+const handleCancelAdd = function () {
+    $('.js-add-and-filter').on('click', '.js-dont-add', event => {
+        event.preventDefault();
+        store.toggleAddMenu();
+        console.log(store.adding);
+        bookmarksmaker.render();
+    })
 }
 
 const filterByRank = function  () {
@@ -55,8 +86,8 @@ const handleError = function  () {
 const combineEventListeners = function () {
     getIdFromElement(),
     handleBookmarkExpand(),
-   //handleBookmarkClose(),
-    handleAddBookmark(),
+    handleAddBookmarkOpen(),
+    handleCancelAdd(),
     handleSumbitNewBookmark(),
     filterByRank(),
     handleDelete(),

@@ -12,6 +12,10 @@ const addItem = function (item) {
     this.items.push(item);
 };
 
+const toggleAddMenu = function () {
+    this.adding = !this.adding;
+}
+
 const deleteLiItem = function (id) {
    this.items = this.items.filter(currentItem => currentItem.id !== id);
     
@@ -36,6 +40,7 @@ export default {
     adding,
     findById,
     addItem,
+    toggleAddMenu,
     deleteLiItem,
     findAndExpand,
     changeRank,
