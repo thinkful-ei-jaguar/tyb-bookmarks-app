@@ -18,7 +18,10 @@ const generateStarRating = function (rating) {
 }
 
 const generateBookmarkItem = function (item) {
-    let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p>${item.title}</p>`;
+    if (item.rating < store.filter) {
+        return "";
+    }
+    let htmlString = `<li class="bookmarks js-individual-bookmark" id="${item.id}"><p class="title">${item.title}</p>`;
     if (item.expanded === false) {
         htmlString += generateStarRating(item.rating) + 
         `<button class="btn js-delete-button"><i class="far fa-trash-alt"></i></button>
@@ -37,11 +40,12 @@ const generateBookmarkItem = function (item) {
 
 const generateBookmarkString = function (bookmarks) {
     const liItems = bookmarks.map((item) => generateBookmarkItem(item));
-    return liItems.join('');
+    const liTogether = liItems.join('');
+    return `<section class="js-bookmark-list"><ul class="bookmarklist">${liTogether}</ul></section>`
 };
 
 const generateButtonString = function () {
-    return `<button class="formbutton js-add-button" type="submit">Add Bookmark</button>
+    return `<section class="addandfilter js-add-and-filter"><button class="formbutton js-add-button" type="submit">Add Bookmark</button>
         <select name="rating" class="ratingDropDown" id="ratingFilter">
             <option value="0">Minimum Rating</option>
             <option value="1">1</option>
@@ -49,7 +53,10 @@ const generateButtonString = function () {
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-        </select>`;
+        </select>
+        </section>
+        <section class='js-error-message'> 
+        </section>`;
 }
 
 const generateAddForm = function () {
@@ -58,7 +65,7 @@ const generateAddForm = function () {
         <label for="bookmarktitle">Title:</label>
         <input type="text" name="title" id="bookmarktitle" required>
         <label for="url">URL:</label>
-        <input type="url" name="url" id="url" pattern="https://.*" required>
+        <input type="url" name="url" id="url" required>
         <label for="rating">Rating:</label>
         <select name="rating" id="rating">
             <option value="1">1</option>
@@ -78,7 +85,26 @@ const generateAddForm = function () {
 </section>`;
 };
 
+const generateErrorMessage = function (message) {
+    return `<section class="errorWindow">
+                <p class="errorP">${message}</p>
+                <button id="cancelError" class="js-cancel-error"><i class="far fa-times-circle"></i></button>
+            </section>`
+}
+
+const renderErrorMessage = function () {
+    if (store.error) {
+        const em = generateErrorMessage(store.error);
+        console.log(em);
+        $('.js-error-message').html(em);
+    }
+    else {
+        $('.js-error-message').empty();
+    }
+}
+
 const render = function () {
+        renderErrorMessage();
         if (store.adding === true) {
             const addMenu = generateAddForm();
             $('.js-add-and-filter').html(addMenu);
@@ -86,12 +112,12 @@ const render = function () {
         else {
         const buttonString = generateButtonString();
         const bookmarkListString = generateBookmarkString(store.items);
-        $('.js-add-and-filter').html(buttonString);
-        $('.js-bookmark-list').children().html(bookmarkListString);
-        }
+        $('main').html(buttonString + bookmarkListString);
+    }
 };
 
 export {
+    generateErrorMessage,
     generateStarRating,
     generateBookmarkItem,
     generateBookmarkString,
@@ -100,8 +126,7 @@ export {
 
 export default {
     render,
+    renderErrorMessage
 };
 
-  /*for (let i=1; i<=item.rating; i++) {
-        $( `li#${item.id}:nth-child(${i+1})`).addClass('checked');
-    }*/
+/*pattern="https://.*"*/ 

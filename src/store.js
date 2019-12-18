@@ -31,8 +31,8 @@ const changeRank = function (num) {
     this.filter = num;
 };
 
-const triggerError = function () {
-
+const triggerError = function (error) {
+    this.error = error;
 };
 
 export default {

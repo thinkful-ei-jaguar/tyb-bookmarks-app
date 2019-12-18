@@ -69,6 +69,8 @@ li.expanded {
 }
 
 
+
+
 @media screen and (max-width: 320px) {
     header {
         display: flex;
@@ -93,7 +95,14 @@ li.expanded {
     li.bookmarks {
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: center;
+    }
+    .title {
+        display: flex;
+        flex-direction: inherit;
+        justify-content: flex-start;
+        padding-right: 25px;
+        text-align: left;
     }
     .btn {
         display: flex;
