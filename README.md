@@ -29,4 +29,4 @@ Check all validations in the API documentation (e.g. title and url field require
 I can select from a dropdown (a <select> element) a "minimum rating" to filter the list by all bookmarks rated at or above the chosen selection
 
 Link to live app:
-https://thinkful-ei-jaguar.github.io/tyb-bookmarks-app/
+<https://thinkful-ei-jaguar.github.io/tyb-bookmarks-app/>
