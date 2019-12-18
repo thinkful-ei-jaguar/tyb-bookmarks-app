@@ -1,6 +1,6 @@
 # Taylor Bradshaw's Bookmarks App Project
 
-This application allows a user to keep a list of favorite websites that includes the website's name and url. In addition, the user can rate the website on a scale from 1-5 and add a description. This project uses a very mobile-friendly interface so that the user can navigate through their individual bookmarks with ease.
+This application allows a user to keep a list of favorite websites that includes the website's name and url. In addition, the user can rate the website on a scale from 1-5 and add a description. This project uses a very mobile-friendly interface so that the user can navigate and organize their individual bookmarks with ease.
 
 The following user stories were implemented in this project:
 
