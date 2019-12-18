@@ -4,7 +4,7 @@
 }
 
 main {
-    max-width: 75%;
+    max-width: 80%;
     margin: auto;
 }
 
@@ -16,11 +16,6 @@ header {
     text-align: center;
 }
 
-section.errormessage {
-    text-align: center;
-    color: red;
-}
-
 section.addandfilter {
     text-align: center;
     margin-bottom: 15px;
@@ -28,7 +23,6 @@ section.addandfilter {
 
 button {
     border-radius: 1px;
-    padding: 5px;
 }
 
 button.formbutton {
@@ -37,14 +31,33 @@ button.formbutton {
 
 form {
     background-color: darkgrey;
-    padding: 10px;
+    padding: 25px;
     border-radius: 5px;
     color: white;
 }
 
-input.textbox {
-    width: 75%;
-    height: 100px;
+input {
+    margin-bottom: 10px;
+    max-height: 25px;
+}
+select {
+    margin-bottom: 10px;
+    max-height: 25px;
+}
+textarea {
+    max-height: 75%;
+}
+.errorWindow {
+    background-color: darkred;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.cancelError {
+    background-color: darkred;
+    border-style: none;
+    color: white;
 }
 
 ul {
@@ -57,7 +70,6 @@ li.bookmarks {
     background-color: darkgrey;
     border-radius: 5px;
     color: white;
-    padding: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
@@ -66,9 +78,19 @@ li.expanded {
     border-style: solid;
     border-color: darkslategray;
     border-width: 2px;
+    background-color: darkgrey;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
-
+.btn {
+    background-color: darkgrey;
+    border-style: none;
+    color: white;
+}
 
 
 @media screen and (max-width: 320px) {
@@ -78,14 +100,20 @@ li.expanded {
         align-items: center;
         justify-items: center;
     }
-}
-
-@media screen and (min-width: 320px) {
-    header {
+    .addNewBookmark {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .formButtons {
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
+        padding-top: 20px;
+    }
+    .errorWindow {
+        display: flex;
+        flex-direction: row;
     }
     ul {
         display: flex;
@@ -95,23 +123,197 @@ li.expanded {
     li.bookmarks {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
+        /*align-content: center;*/
     }
     .title {
         display: flex;
-        flex-direction: inherit;
         justify-content: flex-start;
-        padding-right: 25px;
-        text-align: left;
+        align-self: flex-start;
     }
-    .btn {
+    .starrating {
+        display: flex;
+        align-self: center;
+        margin: 10px;
+    }
+    .bookmarkButtons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        align-self: center;
+    }
+    li.expanded {
+        display: flex;
+        flex-direction: column;
+    }
+    .expandedRowOne {
         display: flex;
         flex-direction: row;
+    }
+
+}
+
+@media screen and (min-width: 320px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .addNewBookmark {
+        display: flex;
+        flex-direction: column;
+    }
+    .formButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 20px;
+    }
+    .errorWindow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .cancelError {
+        display: flex;
         justify-content: flex-end;
+        align-self: center;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+    li.bookmarks {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .title {
+        display: flex;
+        justify-content: flex-start;
+        align-self: flex-start;
+    }
+    .starrating {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+    .bookmarkButtons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        align-self: center;
+    }
+    li.expanded {
+        display: flex;
+        flex-direction: column;
+    }
+    .expandedRowOne {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
 }
 
 @media screen and (min-width: 1000px) {
-
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .addNewBookmark {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-content: center;
+    }
+    label {
+        display: flex;
+        align-self: center;
+    }
+    input {
+        display: flex;
+        align-self: center;
+    }
+    .ratingform {
+        display: flex;
+        align-self: center;
+    }
+    textarea {
+        display: flex;
+        align-self: center;
+    }
+    .formButtons {
+        display: flex;
+        justify-content: flex-end;
+        align-self: center;
+    }
+    .errorWindow {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 20px;
+    }
+    .cancelError {
+        display: flex;
+        justify-content: flex-end;
+        align-self: center;
+        font-size: 20px;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        font-size: 25px;
+    }
+    li.bookmarks {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .title {
+        display: flex;
+        justify-content: flex-start;
+        align-self: flex-start;
+    }
+    .starrating {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+    .bookmarkButtons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        align-self: center;
+    }
+    .btn {
+        font-size: 25px;
+    }
+    li.expanded {
+        display: flex;
+        flex-direction: column;
+    }
+    .expandedRowOne {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .expandedRowTwo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .desc {
+        font-size: 20px;
+    }
+    .website {
+        display: flex;
+        justify-content: flex-end;
+        align-self: center;
+    }
 }
