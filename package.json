@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/thinkful-ei-jaguar/taylorB-bookmarks-app#readme",
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",
